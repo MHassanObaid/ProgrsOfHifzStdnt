@@ -8,24 +8,24 @@ public class HafizStudent {
     private String name;
     private int age;
     private String clas;
-    private String sabaqPara;
+    private int sabaqPara;
     private int sabaqStVrse;
     private int sabaqLsVrse;
     private int sabaqi;
-    private int[] Manzil;
-
+    private String Manzil;
 
     @Override
     public String toString() {
         return "HafizStudent{" +
+                "id=" + id +
                 ", name='" + name + '\'' +
                 ", age=" + age +
                 ", clas='" + clas + '\'' +
-                ", sabaqPara='" + sabaqPara + '\'' +
+                ", sabaqPara=" + sabaqPara +
                 ", sabaqStVrse=" + sabaqStVrse +
                 ", sabaqLsVrse=" + sabaqLsVrse +
                 ", sabaqi=" + sabaqi +
-                ", Manzil=" + Arrays.toString(Manzil) +
+                ", Manzil='" + Manzil + '\'' +
                 '}';
     }
 
@@ -61,11 +61,11 @@ public class HafizStudent {
         this.clas = clas;
     }
 
-    public String getSabaqPara() {
+    public int getSabaqPara() {
         return sabaqPara;
     }
 
-    public void setSabaqPara(String sabaqPara) {
+    public void setSabaqPara(int sabaqPara) {
         this.sabaqPara = sabaqPara;
     }
 
@@ -93,11 +93,11 @@ public class HafizStudent {
         this.sabaqi = sabaqi;
     }
 
-    public int[] getManzil() {
+    public String getManzil() {
         return Manzil;
     }
 
-    public void setManzil(int[] manzil) {
+    public void setManzil(String manzil) {
         Manzil = manzil;
     }
 }

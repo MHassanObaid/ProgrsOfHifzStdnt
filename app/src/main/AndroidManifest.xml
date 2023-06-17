@@ -11,6 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProgrsOfHifzStdnt"
         tools:targetApi="31">
+        <activity android:name=".FirstPage"></activity>
+        <activity android:name=".inputPage"></activity>
         <activity
             android:name=".MainActivity"
             android:exported="true">

@@ -7,41 +7,39 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/textView10"
-        android:layout_width="381dp"
-        android:layout_height="113dp"
+        android:id="@+id/textView"
+        android:layout_width="249dp"
+        android:layout_height="71dp"
         android:layout_marginTop="84dp"
-        android:text="Welcome To Hafz Student Progress App"
+        android:text="Assignment Task"
         android:textAlignment="center"
-
-        android:textColor="@color/teal_200"
+        android:textColor="@color/black"
         android:textSize="30dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.533"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="156dp"
-        android:text="Search"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10"
-        app:layout_constraintVertical_bias="0.244" />
+        android:layout_marginTop="276dp"
+        android:text="Commits"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/button99"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="136dp"
-        android:text="Add Student"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10"
-        app:layout_constraintVertical_bias="0.576" />
+        android:layout_marginTop="148dp"
+        android:text="Student Progress App"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
