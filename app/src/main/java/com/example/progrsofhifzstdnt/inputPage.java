@@ -32,6 +32,8 @@ public class inputPage extends AppCompatActivity {
 
         List<HafizStudent> friendsList = new ArrayList<>();
 
+
+
         rc = findViewById(R.id.rcvad);
 
         addRecord.setOnClickListener(new View.OnClickListener() {
@@ -61,14 +63,15 @@ public class inputPage extends AppCompatActivity {
                  String mnzil="";
                  for (int i=1; i<sbqpara ; i++)
                  {
-                      mnzil += i+"+";
+                      mnzil += i;
                  }
                  hs.setManzil(mnzil);
 
-                 DbHelper db = new DbHelper(inputPage.this);
+                DbHelper db;
+                  db = new DbHelper(inputPage.this);
                  db.insertStudent(hs);
 
-                Toast.makeText(getApplicationContext(),"Record Added Successfully",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"Record Added",Toast.LENGTH_SHORT).show();
                 friendsList.add(hs);
 
 
@@ -76,14 +79,32 @@ public class inputPage extends AppCompatActivity {
 
             }
         });
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(inputPage.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+
+        DbHelper dp = new DbHelper(inputPage.this);
+
+        List<HafizStudent> friendsLists = new ArrayList<>();
+
+        friendsLists = dp.selectAllStudents();
+
         rc.setHasFixedSize(true);
 
-        layoutManager = new LinearLayoutManager(inputPage.this);
+        layoutManager = new LinearLayoutManager(this);
         rc.setLayoutManager(layoutManager);
 
 
 
-        adapter = new MyRecyclerViewAdapter(friendsList) ;
+
+        adapter = new MyRecyclerViewAdapter(this , friendsLists) ;
         rc.setAdapter(adapter);
         //adapter.notifyDataSetChanged();
 

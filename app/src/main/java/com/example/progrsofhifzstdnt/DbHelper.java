@@ -34,7 +34,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        /*String sql = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + "("
+        String sql = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + "("
                 + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + COLUMN_NAME + " TEXT,"
                 + COLUMN_AGE + " INTEGER,"
@@ -44,11 +44,11 @@ public class DbHelper extends SQLiteOpenHelper {
                 + COLUMN_SABAQ_FN_VRS + "INTEGER"
                 + COLUMN_SABAQI + "INTEGER"
                 + COLUMN_MANZIL + "TEXT"
-                + ")";*/
+                + ")";
 
-        String sql = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + "("
-                + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-                + COLUMN_NAME + " TEXT" + ")";
+       // String sql = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + "("
+         //       + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+           //     + COLUMN_NAME + " TEXT" + ")";
 
         db.execSQL(sql);
     }
@@ -65,14 +65,14 @@ public class DbHelper extends SQLiteOpenHelper {
 
         ContentValues values = new ContentValues();
         values.put(COLUMN_NAME, student.getName());
-        //values.put(COLUMN_AGE, student.getAge());
-        //values.put(COLUMN_CLASS, student.getClas());
-        //values.put(COLUMN_SABAQ_PARA, student.getSabaqPara());
-        //values.put(COLUMN_SABAQ_ST_VRS, student.getSabaqStVrse());
-        //values.put(COLUMN_SABAQ_FN_VRS, student.getSabaqLsVrse());
+        values.put(COLUMN_AGE, student.getAge());
+        values.put(COLUMN_CLASS, student.getClas());
+        values.put(COLUMN_SABAQ_PARA, student.getSabaqPara());
+        values.put(COLUMN_SABAQ_ST_VRS, student.getSabaqStVrse());
+        values.put(COLUMN_SABAQ_FN_VRS, student.getSabaqLsVrse());
         //COLUMN_SABAQI
-        //values.put(COLUMN_SABAQI, student.getSabaqi());
-        //values.put(COLUMN_MANZIL,student.getManzil());
+        values.put(COLUMN_SABAQI, student.getSabaqi());
+        values.put(COLUMN_MANZIL,student.getManzil());
 
 
 
@@ -103,7 +103,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
         String sql = "SELECT * FROM " + TABLE_NAME;
 
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(sql, null);
 
         /*
@@ -122,6 +122,13 @@ public class DbHelper extends SQLiteOpenHelper {
             do {
                 @SuppressLint("Range") int id = cursor.getInt(cursor.getColumnIndex(COLUMN_ID));
                 @SuppressLint("Range") String name = cursor.getString(cursor.getColumnIndex(COLUMN_NAME));
+                @SuppressLint("Range") int age = cursor.getInt(cursor.getColumnIndex(COLUMN_AGE));
+                @SuppressLint("Range") String clas = cursor.getString(cursor.getColumnIndex(COLUMN_CLASS));
+                @SuppressLint("Range") int sbqPara = cursor.getInt(cursor.getColumnIndex(COLUMN_SABAQ_PARA));
+                @SuppressLint("Range") int sbqStVrs = cursor.getInt(cursor.getColumnIndex(COLUMN_SABAQ_ST_VRS));
+                @SuppressLint("Range") int sbqLsVrs = cursor.getInt(cursor.getColumnIndex(COLUMN_SABAQ_FN_VRS));
+                @SuppressLint("Range") int sqbi = cursor.getInt(cursor.getColumnIndex(COLUMN_SABAQI));
+                @SuppressLint("Range") String mnzl = cursor.getString(cursor.getColumnIndex(COLUMN_MANZIL));
                 //@SuppressLint("Range")  String rollNo = cursor.getString(cursor.getColumnIndex(COLUMN_ROLLNO));
                 //@SuppressLint("Range") boolean isEnroll = cursor.getInt(cursor.getColumnIndex(COLUMN_ENROLL))>0;
 

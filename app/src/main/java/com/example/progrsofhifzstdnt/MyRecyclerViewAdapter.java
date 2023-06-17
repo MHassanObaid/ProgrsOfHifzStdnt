@@ -1,4 +1,5 @@
 package com.example.progrsofhifzstdnt;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,10 +17,13 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     List<HafizStudent> friendsList;
      //HafizStudent friendsList;
 
-    public MyRecyclerViewAdapter(List<HafizStudent> friendsList) {
+    public MyRecyclerViewAdapter(Context context , List<HafizStudent> friendsList) {
 
         this.friendsList = friendsList;
+        this.friendsList = friendsList;
     }
+
+
 
     @NonNull
     @Override
@@ -33,9 +37,13 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     public void onBindViewHolder(@NonNull MyRecyclerViewAdapter.MyVH holder, int position) {
         holder.data=friendsList.get(position);
         holder.nameText.setText(holder.data.getName());
-        holder.ageText.setText(String.valueOf(holder.data.getName()));
+        holder.ageText.setText(String.valueOf(holder.data.getAge()));
         holder.classText.setText(holder.data.getClas());
-        //holder.textViewCity.setText(holder.data.getCity());
+         holder.sabaqText.setText(String.valueOf(holder.data.getSabaqPara())+String.valueOf(holder.data.getSabaqStVrse())+String.valueOf(holder.data.getSabaqLsVrse()));
+        holder.sabaqiText.setText(String.valueOf(holder.data.getSabaqi()));
+        holder.ManzilText.setText(holder.data.getManzil());
+
+         //holder.textViewCity.setText(holder.data.getCity());
     }
 
 
@@ -53,6 +61,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         TextView ageText;
         TextView classText;
         TextView sabaqText;
+
         TextView sabaqiText;
         TextView ManzilText;
 
@@ -63,6 +72,9 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
                nameText = itemView.findViewById(R.id.textView1);
             ageText = itemView.findViewById(R.id.textView2);
             classText = itemView.findViewById(R.id.textView3);
+            sabaqText = itemView.findViewById(R.id.textView5);
+            sabaqiText = itemView.findViewById(R.id.textView8);
+            ManzilText = itemView.findViewById(R.id.textView9);
 
         }
 
