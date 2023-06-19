@@ -6,6 +6,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
 
 public class DbHelper extends SQLiteOpenHelper {
 
-    private static final String DATABASE_NAME = "students.db";
+    private static final String DATABASE_NAME = "student.db";
     private static final String TABLE_NAME = "students";
 
     private static final String COLUMN_ID = "id";
@@ -34,23 +35,20 @@ public class DbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String sql = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + "("
-                + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+        String query = "CREATE TABLE " + TABLE_NAME + " ("
+                + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + COLUMN_NAME + " TEXT,"
                 + COLUMN_AGE + " INTEGER,"
                 + COLUMN_CLASS + " TEXT,"
-                + COLUMN_SABAQ_PARA + "INTEGER"
-                + COLUMN_SABAQ_ST_VRS + "INTEGER"
-                + COLUMN_SABAQ_FN_VRS + "INTEGER"
-                + COLUMN_SABAQI + "INTEGER"
-                + COLUMN_MANZIL + "TEXT"
-                + ")";
+                + COLUMN_SABAQ_PARA + " INTEGER,"
+                + COLUMN_SABAQ_ST_VRS  +" INTEGER,"
+                + COLUMN_SABAQ_FN_VRS+" INTEGER,"
+                + COLUMN_SABAQI +" INTEGER,"
+                +COLUMN_MANZIL+" TEXT)";
 
-       // String sql = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + "("
-         //       + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-           //     + COLUMN_NAME + " TEXT" + ")";
+         Log.d("qd","here is msg"+query);
 
-        db.execSQL(sql);
+        db.execSQL(query);
     }
 
     @Override
@@ -77,6 +75,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
 
         db.insert(TABLE_NAME, null, values);
+
         db.close();
     }
 
@@ -131,6 +130,8 @@ public class DbHelper extends SQLiteOpenHelper {
                 @SuppressLint("Range") String mnzl = cursor.getString(cursor.getColumnIndex(COLUMN_MANZIL));
                 //@SuppressLint("Range")  String rollNo = cursor.getString(cursor.getColumnIndex(COLUMN_ROLLNO));
                 //@SuppressLint("Range") boolean isEnroll = cursor.getInt(cursor.getColumnIndex(COLUMN_ENROLL))>0;
+                HafizStudent hs = new HafizStudent(id,name,age,clas,sbqPara,sbqStVrs,sbqLsVrs);
+                students.add(hs);
 
             } while (cursor.moveToNext());
         }

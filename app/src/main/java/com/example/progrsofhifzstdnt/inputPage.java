@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.content.Intent;
 import android.net.Uri;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,24 +18,23 @@ import java.util.List;
 
 public class inputPage extends AppCompatActivity {
 
-    Button back,addRecord;
+    Button back,addRecord,diply;
     RecyclerView rc;
     EditText hafizNm,hafizAge,hafizCls,hafizSbqPara,hafizSbqStVrs,hafizSbqLstVrs;
-    RecyclerView.LayoutManager layoutManager;
 
-    RecyclerView.Adapter adapter;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.input);
 
         addRecord = findViewById(R.id.button3);
-
+        diply = findViewById(R.id.button6);
+back = findViewById(R.id.button5);
         List<HafizStudent> friendsList = new ArrayList<>();
 
 
 
-        rc = findViewById(R.id.rcvad);
+
 
         addRecord.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,7 +72,19 @@ public class inputPage extends AppCompatActivity {
                  db.insertStudent(hs);
 
                 Toast.makeText(getApplicationContext(),"Record Added",Toast.LENGTH_SHORT).show();
-                friendsList.add(hs);
+                //friendsList.add(hs);
+
+
+                //DbHelper dp = new DbHelper(inputPage.this);
+
+                List<HafizStudent> friendsLists = new ArrayList<>();
+
+
+
+
+                Log.d("size","here is size "+friendsLists.size());
+              //  friendsLists = db.selectAllStudents();
+
 
 
 
@@ -88,25 +100,19 @@ public class inputPage extends AppCompatActivity {
             }
         });
 
+        diply.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(inputPage.this, display.class);
+                startActivity(intent);
 
 
-        DbHelper dp = new DbHelper(inputPage.this);
-
-        List<HafizStudent> friendsLists = new ArrayList<>();
-
-        friendsLists = dp.selectAllStudents();
-
-        rc.setHasFixedSize(true);
-
-        layoutManager = new LinearLayoutManager(this);
-        rc.setLayoutManager(layoutManager);
+            }
+        });
 
 
 
 
-        adapter = new MyRecyclerViewAdapter(this , friendsLists) ;
-        rc.setAdapter(adapter);
-        //adapter.notifyDataSetChanged();
 
 
     }

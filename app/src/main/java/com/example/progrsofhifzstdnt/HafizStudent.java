@@ -14,7 +14,41 @@ public class HafizStudent {
     private int sabaqi;
     private String Manzil;
 
-    @Override
+
+    public HafizStudent()
+    {
+this.id=0;
+this.name="";
+this.age=0;
+this.clas="";
+this.sabaqPara=0;
+this.sabaqStVrse=0;
+this.sabaqLsVrse=0;
+    }
+    public HafizStudent(int id ,String name, int age, String clas , int sbqpara , int sbqsv , int sbqlv  )
+    {
+        this.id = id;
+        this.name = name;
+        this.clas = clas;
+        this.age = age;
+        this.sabaqPara = sbqpara;
+        this.sabaqStVrse = sbqsv;
+        this.sabaqLsVrse = sbqlv;
+        this.sabaqi = sbqpara-1;
+        String mnzil="";
+        for (int i=1; i<sbqpara ; i++)
+        {
+            if(i==sbqpara-1)
+                mnzil+=i;
+            else
+                mnzil += i+",";
+        }
+        this.Manzil = mnzil;
+
+
+    }
+
+    /*@Override
     public String toString() {
         return "HafizStudent{" +
                 "id=" + id +
@@ -27,7 +61,7 @@ public class HafizStudent {
                 ", sabaqi=" + sabaqi +
                 ", Manzil='" + Manzil + '\'' +
                 '}';
-    }
+    }*/
 
     public int getId() {
         return id;

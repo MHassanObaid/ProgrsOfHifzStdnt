@@ -39,7 +39,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         holder.nameText.setText(holder.data.getName());
         holder.ageText.setText(String.valueOf(holder.data.getAge()));
         holder.classText.setText(holder.data.getClas());
-         holder.sabaqText.setText(String.valueOf(holder.data.getSabaqPara())+String.valueOf(holder.data.getSabaqStVrse())+String.valueOf(holder.data.getSabaqLsVrse()));
+         holder.sabaqText.setText("Para"+String.valueOf(holder.data.getSabaqPara())+"SV"+String.valueOf(holder.data.getSabaqStVrse())+"LV"+String.valueOf(holder.data.getSabaqLsVrse()));
         holder.sabaqiText.setText(String.valueOf(holder.data.getSabaqi()));
         holder.ManzilText.setText(holder.data.getManzil());
 
