@@ -141,4 +141,78 @@ public class DbHelper extends SQLiteOpenHelper {
 
         return students;
     }
+
+    public List<HafizStudent> search(String nm, String cls) {
+
+      /*  List<HafizStudent> students = new ArrayList<>();
+
+        String sql = "SELECT * FROM " + TABLE_NAME + " WHERE " + COLUMN_NAME + " = " + nm + " AND " + COLUMN_CLASS + " = " + cls;
+
+        Log.d("serchquery", "sui is " + sql);
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(sql, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                @SuppressLint("Range") int id = cursor.getInt(cursor.getColumnIndex(COLUMN_ID));
+                @SuppressLint("Range") String name = cursor.getString(cursor.getColumnIndex(COLUMN_NAME));
+                @SuppressLint("Range") int age = cursor.getInt(cursor.getColumnIndex(COLUMN_AGE));
+                @SuppressLint("Range") String clas = cursor.getString(cursor.getColumnIndex(COLUMN_CLASS));
+                @SuppressLint("Range") int sbqPara = cursor.getInt(cursor.getColumnIndex(COLUMN_SABAQ_PARA));
+                @SuppressLint("Range") int sbqStVrs = cursor.getInt(cursor.getColumnIndex(COLUMN_SABAQ_ST_VRS));
+                @SuppressLint("Range") int sbqLsVrs = cursor.getInt(cursor.getColumnIndex(COLUMN_SABAQ_FN_VRS));
+                @SuppressLint("Range") int sqbi = cursor.getInt(cursor.getColumnIndex(COLUMN_SABAQI));
+                @SuppressLint("Range") String mnzl = cursor.getString(cursor.getColumnIndex(COLUMN_MANZIL));
+                //@SuppressLint("Range")  String rollNo = cursor.getString(cursor.getColumnIndex(COLUMN_ROLLNO));
+                //@SuppressLint("Range") boolean isEnroll = cursor.getInt(cursor.getColumnIndex(COLUMN_ENROLL))>0;
+                students.add(new HafizStudent(id, name, age, clas, sbqPara, sbqStVrs, sbqLsVrs));
+            } while (cursor.moveToNext());
+        }
+
+
+        cursor.close();
+        db.close();
+
+        return students;*/
+        SQLiteDatabase db = this.getReadableDatabase();
+        List<HafizStudent> ls = new ArrayList<>();
+        //SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+        String[] projection = { "name", "age","class","sabaq_para","sabaq_st_vrs","sabaq_fn_vrs","sabaqi","manzil" }; // Specify the columns you want to retrieve
+        String selection = "name = ?"; // Specify your search criteria
+        String[] selectionArgs = {nm }; // Provide the search term(s)
+
+        Cursor cursor = db.query("students", projection, selection, selectionArgs, null, null, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                // Retrieve data from the cursor
+                @SuppressLint("Range") int id = cursor.getInt(cursor.getColumnIndex(COLUMN_ID));
+                @SuppressLint("Range") String name = cursor.getString(cursor.getColumnIndex(COLUMN_NAME));
+                @SuppressLint("Range") int age = cursor.getInt(cursor.getColumnIndex(COLUMN_AGE));
+                @SuppressLint("Range") String clas = cursor.getString(cursor.getColumnIndex(COLUMN_CLASS));
+                @SuppressLint("Range") int sbqPara = cursor.getInt(cursor.getColumnIndex(COLUMN_SABAQ_PARA));
+                @SuppressLint("Range") int sbqStVrs = cursor.getInt(cursor.getColumnIndex(COLUMN_SABAQ_ST_VRS));
+                @SuppressLint("Range") int sbqLsVrs = cursor.getInt(cursor.getColumnIndex(COLUMN_SABAQ_FN_VRS));
+                @SuppressLint("Range") int sqbi = cursor.getInt(cursor.getColumnIndex(COLUMN_SABAQI));
+                @SuppressLint("Range") String mnzl = cursor.getString(cursor.getColumnIndex(COLUMN_MANZIL));
+                //@SuppressLint("Range")  String rollNo = cursor.getString(cursor.getColumnIndex(COLUMN_ROLLNO));
+                //@SuppressLint("Range") boolean isEnroll = cursor.getInt(cursor.getColumnIndex(COLUMN_ENROLL))>0;
+                HafizStudent hs = new HafizStudent(id,name,age,clas,sbqPara,sbqStVrs,sbqLsVrs);
+                ls.add(hs);
+
+                // Do something with the retrieved data
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+return ls;
+
+    }
+
+
+
+
 }
